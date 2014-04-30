@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="container">
+  <script type="text/x-handlebars">
+    <h2>27 Hop</h2>
+    <img src="img/hippo.png">
+
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="tables">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span5">
+          <table class="table">
+            <thead>
+              <tr><th>Hippo Tables</th></tr>
+            </thead>
+            {{#each}}
+              <tr>
+                <td>{{#link-to "table" this}}{{table_name}}{{/link-to}}</td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="table">
+    {{#if isEditing}}
+      {{partial 'table/edit'}}
+        <button {{action 'doneEditing'}}>Done</button>
+    {{else}}
+      <button {{action 'edit'}}>Edit</button>
+    {{/if}}
+
+    <h1>Table {{table_name}}</h1>
+  </script>
+
+
+  <script type="text/x-handlebars" id="table/_edit">
+  <p>{{input type="text" value="table_name"}}</p>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.5.1.js"></script>
+  <script src="js/ember-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/models/table.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+  <script src="bootstrap-3.1.1-dist/css/bootstrap-theme.css"></script>
+</div>
+</body>
+</html>
